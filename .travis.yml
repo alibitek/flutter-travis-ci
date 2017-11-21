@@ -1,0 +1,22 @@
+os:
+  - linux
+
+sudo: false
+
+addons:
+    apt:
+        packages:
+            - fonts-droid
+
+before_script:
+  - git clone https://github.com/flutter/flutter.git -b alpha --depth 1
+  - export PATH="$PATH:$(pwd -L)/flutter/bin"
+  - flutter config --no-analytics
+  - flutter doctor
+
+script:
+  - flutter test
+
+cache:
+  directories:
+    - $HOME/.pub-cache
